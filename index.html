@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>project</title>
+  </head>
+  <body>
+    <main class="page-content">
+      <section class="hero">
+        <div class="hero__image-container" id="imageContainer">
+          <img
+            src="/src/images/Placeholder.png"
+            alt="Шоколадные конфеты"
+            class="hero__image"
+          />
+        </div>
+
+        <div
+          class="hero__video-container"
+          id="videoContainer"
+          style="display: none"
+        >
+          <iframe
+            id="heroVideoPlayer"
+            width="560"
+            height="315"
+            src=""
+            title="Проигрыватель видео"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <button class="hero__play-button" id="playButton">
+          Смотреть видео
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="15"
+            viewBox="0 0 14 15"
+            fill="none"
+          >
+            <path
+              d="M2.91675 2.25L11.0834 7.5L2.91675 12.75V2.25Z"
+              stroke="white"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </section>
+      <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-form" id="popupForm">
+          <span class="popup-form__close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M15 5L5 15"
+                stroke="#444444"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 5L15 15"
+                stroke="#444444"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <h2 class="popup-form__title">Оставьте заявку</h2>
+          <form id="myForm" novalidate>
+            <div class="popup-form__group-name">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Ваше имя*"
+                class="popup-form__input"
+              />
+              <span class="popup-form__error" style="display: none"></span>
+            </div>
+            <div class="popup-form__group-number">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="Номер телефона*"
+                class="popup-form__input"
+              />
+              <span class="popup-form__error"></span>
+            </div>
+            <div class="popup-form__agreement">
+              <input
+                type="checkbox"
+                id="agreement"
+                name="agreement"
+                required
+                class="popup-form__agreement-input"
+              />
+              <label for="agreement" class="popup-form__agreement-label"
+                >Я соглашаюсь на обработку персональных данных</label
+              >
+              <span
+                class="popup-form__error-alternative"
+                style="display: none"
+              ></span>
+              <button type="submit" class="popup-form__submit">
+                Отправить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <section class="product-case">
+        <div class="product-case__container container">
+          <ul class="product-case__list">
+            <li class="product-case__item">
+              <article class="product-card">
+                <div class="product-card__image-wrapper">
+                  <img
+                    src="/src/images/Peas.png"
+                    alt="Горох в стручках"
+                    class="product-card__image"
+                  />
+                  <div class="product-card__actions">
+                    <button
+                      class="product-card__action-button product-card__action-button--wishlist button--icon"
+                      aria-label="Добавить в избранное: Горох в стручках"
+                    >
+                      <img
+                        src="/src/icons/wishlist-button.svg"
+                        alt="Иконка добавить в избранное"
+                      />
+                    </button>
+                    <button
+                      class="product-card__action-button product-card__action-button--info button--icon"
+                      aria-label="Информация о товаре: Горох в стручках"
+                    >
+                      <img
+                        src="/src/icons/info-button.svg"
+                        alt="Иконка информация о товаре"
+                      />
+                    </button>
+                  </div>
+                  <div class="product-card__badges">
+                    <span
+                      class="product-card__badge product-card__badge--discount"
+                      >-29%</span
+                    >
+                    <span class="product-card__badge product-card__badge--deal"
+                      >Товар дня</span
+                    >
+                  </div>
+                  <div class="product-card__info">
+                    <h3 class="product-card__title">Горох в стручках, 1 кг</h3>
+                  </div>
+                  <div class="product-card__order product-card__order--mobile">
+                    <p class="product-card__price">570 ₽</p>
+                    <button
+                      class="product-card__order-button button button--primary"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li class="product-case__item">
+              <article class="product-card product-card-abc">
+                <div class="product-card__image-wrapper">
+                  <img
+                    src="/src/images/Blueberry.png"
+                    alt="Голубика лесная"
+                    class="product-card__image"
+                  />
+                  <div class="product-card__actions">
+                    <button
+                      class="product-card__action-button product-card__action-button--wishlist button--icon"
+                      aria-label="Добавить в избранное: Голубика лесная"
+                    >
+                      <img
+                        src="/src/icons/wishlist-button.svg"
+                        alt="Иконка добавить в избранное"
+                      />
+                    </button>
+                    <button
+                      class="product-card__action-button product-card__action-button--info button--icon"
+                      aria-label="Информация о товаре: Голубика лесная"
+                    >
+                      <img
+                        src="/src/icons/info-button.svg"
+                        alt="Иконка информация о товаре"
+                      />
+                    </button>
+                  </div>
+                  <div class="product-card__badges">
+                    <span class="product-card__badge product-card__badge--big"
+                      >-31%</span
+                    >
+                    <span class="product-card__badge product-card__badge--sale"
+                      >Распродажа</span
+                    >
+                  </div>
+                  <div class="product-card__info">
+                    <h3 class="product-card__title">Голубика лесная, 200г</h3>
+                  </div>
+                  <div class="product-card__order product-card__order--mobile">
+                    <p class="product-card__price">140 ₽</p>
+                    <button
+                      class="product-card__order-button button button--primary"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li class="product-case__item">
+              <article class="product-card">
+                <div class="product-card__image-wrapper">
+                  <img
+                    src="/src/images/Carrots.png"
+                    alt="Морковь мытая"
+                    class="product-card__image"
+                  />
+                  <div class="product-card__actions">
+                    <button
+                      class="product-card__action-button product-card__action-button--wishlist button--icon"
+                      aria-label="Добавить в избранное: Морковь мытая"
+                    >
+                      <img
+                        src="/src/icons/wishlist-button.svg"
+                        alt="Иконка добавить в избранное"
+                      />
+                    </button>
+                    <button
+                      class="product-card__action-button product-card__action-button--info button--icon"
+                      aria-label="Информация о товаре: Морковь мытая"
+                    >
+                      <img
+                        src="/src/icons/info-button.svg"
+                        alt="Иконка информация о товаре"
+                      />
+                    </button>
+                  </div>
+                  <div class="product-card__badges">
+                    <span
+                      class="product-card__badge product-card__badge--popular"
+                      >Хит</span
+                    >
+                  </div>
+                  <div class="product-card__info">
+                    <h3 class="product-card__title">Морковь мытая, 1кг</h3>
+                  </div>
+                  <div class="product-card__order product-card__order--mobile">
+                    <p class="product-card__price">140 ₽</p>
+                    <button
+                      class="product-card__order-button button button--primary"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li class="product-case__item product-case__item--original-popcorn">
+              <article class="product-card">
+                <div class="product-card__image-wrapper">
+                  <img
+                    src="/src/images/popcorn.png"
+                    alt="Попкорн солёный для СВЧ-печи"
+                    class="product-card__image"
+                  />
+                  <div class="product-card__actions"></div>
+                  <div class="product-card__badges-alternative__desktop"></div>
+                  <div
+                    class="product-card__badges-alternative product-card__badges--tablet"
+                  ></div>
+                  <div
+                    class="product-card__badges-alternative product-card__badges--mobile-slider"
+                  >
+                    <span class="product-card__badge product-card__badge--deal"
+                      >Товар дня</span
+                    >
+                    <span
+                      class="product-card__badge product-card__badge--discount"
+                      >-20%</span
+                    >
+                  </div>
+                </div>
+                <div class="product-card__wrapper">
+                  <div class="product-card__info--alt">
+                    <h3 class="product-card__title product-card__title--alt">
+                      Попкорн солёный, для СВЧ-печи, 120г
+                    </h3>
+                  </div>
+                  <div class="product-card__order--alt">
+                    <p class="product-card__price product-card__price--alt">
+                      160 ₽
+                    </p>
+                    <button
+                      class="product-card__order-button product-card__order-button-alternative button button--primary"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li
+              class="product-case__item product-case__item--original-popsicle"
+            >
+              <article class="product-card">
+                <div class="product-card__image-wrapper">
+                  <img
+                    src="/src/images/Popsicle.png"
+                    alt="Эскимо с малиной"
+                    class="product-card__image"
+                  />
+                  <div class="product-card__actions"></div>
+                  <div
+                    class="product-card__badges-alternative product-card__badges--mobile-slider"
+                  >
+                    <span
+                      class="product-card__badge product-card__badge--popular"
+                      >Хит</span
+                    >
+                  </div>
+                </div>
+                <div class="product-card__wrapper">
+                  <div class="product-card__info--alt">
+                    <h3 class="product-card__title product-card__title--alt">
+                      Эскимо с малиной, 150г
+                    </h3>
+                  </div>
+                  <div class="product-card__order--alt">
+                    <p class="product-card__price product-card__price--alt">
+                      190 ₽
+                    </p>
+                    <button
+                      class="product-card__order-button product-card__order-button-alternative button button--primary"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ul>
+
+          <div class="product-case__slider-mobile">
+            <div class="slider-wrapper">
+              <ul class="slider-track">
+                <li class="slider-slide">
+                  <article class="product-card-mobile">
+                    <div class="product-card__image-wrapper-mobile">
+                      <img
+                        src="/src/images/popcorn.png"
+                        alt="Попкорн солёный для СВЧ-печи"
+                        class="product-card__image"
+                      />
+                      <div class="product-card__actions">
+                        <button
+                          class="product-card__action-button product-card__action-button--wishlist button--icon"
+                          aria-label="Добавить в избранное: Попкорн солёный"
+                        >
+                          <img
+                            src="/src/icons/wishlist-button.svg"
+                            alt="Иконка добавить в избранное"
+                          />
+                        </button>
+                        <button
+                          class="product-card__action-button product-card__action-button--info button--icon"
+                          aria-label="Информация о товаре: Попкорн солёный"
+                        >
+                          <img
+                            src="/src/icons/info-button.svg"
+                            alt="Иконка информация о товаре"
+                          />
+                        </button>
+                      </div>
+                      <div
+                        class="product-card__badges-alternative product-card__badges--mobile-slider"
+                      >
+                        <span
+                          class="product-card__badge product-card__badge--deal"
+                          >Товар дня</span
+                        >
+                        <span
+                          class="product-card__badge product-card__badge--discount"
+                          >-20%</span
+                        >
+                      </div>
+                    </div>
+                    <div class="product-card__wrapper">
+                      <div class="product-card__info--alt">
+                        <h3
+                          class="product-card__title product-card__title--alt"
+                        >
+                          Попкорн солёный, для СВЧ-печи, 120г
+                        </h3>
+                      </div>
+                      <div class="product-card__order--alt">
+                        <p class="product-card__price product-card__price--alt">
+                          160 ₽
+                        </p>
+                        <button
+                          class="product-card__order-button product-card__order-button-alternative button button--primary"
+                        >
+                          Оставить заявку
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="slider-slide">
+                  <article class="product-card-mobile">
+                    <div class="product-card__image-wrapper-mobile">
+                      <img
+                        src="/src/images/Popsicle.png"
+                        alt="Эскимо с малиной"
+                        class="product-card__image"
+                      />
+                      <div class="product-card__actions">
+                        <button
+                          class="product-card__action-button product-card__action-button--wishlist button--icon"
+                          aria-label="Добавить в избранное: Эскимо с малиной"
+                        >
+                          <img
+                            src="/src/icons/wishlist-button.svg"
+                            alt="Иконка добавить в избранное"
+                          />
+                        </button>
+                        <button
+                          class="product-card__action-button product-card__action-button--info button--icon"
+                          aria-label="Информация о товаре: Эскимо с малиной"
+                        >
+                          <img
+                            src="/src/icons/info-button.svg"
+                            alt="Иконка информация о товаре"
+                          />
+                        </button>
+                      </div>
+                      <div
+                        class="product-card__badges-alternative product-card__badges--mobile-slider"
+                      >
+                        <span
+                          class="product-card__badge product-card__badge--popular"
+                          >Хит</span
+                        >
+                      </div>
+                    </div>
+                    <div class="product-card__wrapper">
+                      <div class="product-card__info--alt">
+                        <h3
+                          class="product-card__title product-card__title--alt"
+                        >
+                          Эскимо с малиной, 150г
+                        </h3>
+                      </div>
+                      <div class="product-card__order--alt">
+                        <p class="product-card__price product-card__price--alt">
+                          190 ₽
+                        </p>
+                        <button
+                          class="product-card__order-button product-card__order-button-alternative button button--primary"
+                        >
+                          Оставить заявку
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </div>
+            <div class="slider-pagination">
+              <button
+                class="slider-dot active"
+                data-slide-index="0"
+                aria-label="Перейти к слайду 1"
+              ></button>
+              <button
+                class="slider-dot"
+                data-slide-index="1"
+                aria-label="Перейти к слайду 2"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
