@@ -3,22 +3,28 @@ import "./src/styles/style.scss";
 const sliderTrack = document.querySelector(".slider-track");
 const slides = sliderTrack ? Array.from(sliderTrack.children) : [];
 const paginationDots = document.querySelectorAll(".slider-dot");
+let currentActiveIndex = 0;
 
 if (sliderTrack && slides.length > 0 && paginationDots.length > 0) {
   const updateSliderPosition = (targetIndex) => {
     const slideWidth = slides[0].offsetWidth;
-    const gap = 15;
-    sliderTrack.style.transform = `translateX(-${
-      targetIndex * (slideWidth + gap)
-    }px)`;
+    const gap = parseFloat(getComputedStyle(sliderTrack).gap) || 15;
+    let offset = targetIndex * (slideWidth + gap);
+    sliderTrack.style.transform = `translateX(-${offset}px)`;
+    currentActiveIndex = targetIndex;
+    updateSlideStates();
   };
-
   const updateDots = (activeIndex) => {
     paginationDots.forEach((dot, index) => {
-      if (index === activeIndex) {
-        dot.classList.add("active");
-      } else {
-        dot.classList.remove("active");
+      dot.classList.toggle("active", index === activeIndex);
+    });
+  };
+
+  const updateSlideStates = () => {
+    slides.forEach((slide, index) => {
+      slide.classList.remove("is-inactive", "is-partially-visible");
+      if (index !== currentActiveIndex) {
+        slide.classList.add("is-inactive");
       }
     });
   };
@@ -31,8 +37,8 @@ if (sliderTrack && slides.length > 0 && paginationDots.length > 0) {
     });
   });
 
-  updateDots(0);
-  updateSliderPosition(0);
+  updateDots(currentActiveIndex);
+  updateSliderPosition(currentActiveIndex);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -41,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("myForm");
   const nameInput = document.getElementById("name");
   const phoneInput = document.getElementById("phone");
+  const buttonOpenPopup = document.querySelectorAll(".open-popup");
   const nameErrorSpan =
     nameInput.parentElement.querySelector(".popup-form__error");
   const phoneErrorSpan =
@@ -48,7 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   popupOverlay.style.display = "none";
 
-  setTimeout(() => (popupOverlay.style.display = "flex"), 3000);
+  buttonOpenPopup.forEach((button) => {
+    button.addEventListener("click", function () {
+      popupOverlay.style.display = "flex";
+    });
+  });
 
   closeButton.addEventListener("click", closePopup);
   popupOverlay.addEventListener(
@@ -138,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (videoContainer) {
-      videoContainer.style.display = "block";
+      videoContainer.style.display = "flex";
       videoContainer.style.height = "auto";
     }
 
